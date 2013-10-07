@@ -40,7 +40,7 @@ def query(request):
                                             context_instance = RequestContext(request))
                                 
 def order(request):
-    if not request.user.is_authenticated() #if user is not authenticated,just redirect to login
+    if not request.user.is_authenticated()： #if user is not authenticated,just redirect to login
         return redirect("/admin/")
     if request.REQUEST.has_key('pid'):
         pagenum = request.REQUEST['pid']
