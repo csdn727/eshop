@@ -1,0 +1,10 @@
+{%if products.has_previous%}
+<a href="/{{pagename}}?pid={{products.previous_page_number}}">prev page</a>
+{%endif%}
+{%for pn in p.page_range%}
+    <a href="/{{pagename}}?pid={{pn}}">{{pn}}</a>
+{%endfor%}
+
+{%if products.has_next%}
+<a href="/{{pagename}}?pid={{products.next_page_number}}">next page</a>
+{%endif%}

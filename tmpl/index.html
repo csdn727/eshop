@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% autoescape on %}
+{% block content %}
+{% include "nav.html" %}
+
+
+{% include "pagenav.html"%}
+
+<form align = 'center' action="/query" method = 'post'>
+{% csrf_token %}
+<input type='text' name='Pname' />
+<input type='submit' value="submit"/>
+</form>
+
+<table id="result_list" align='center'  class="{%cycle row1 row2%}"> 
+<thead>
+<tr>
+
+
+<th scope="col" >
+   
+   <div class="text"><span>name</span></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" >
+   
+   <div class="text"><span>price</span></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" >
+   
+   <div class="text"><span>ptype</span></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" >
+   
+   <div class="text"><span>img</span></div>
+   <div class="clear"></div>
+</th>
+</tr>
+</thead>
+<tbody>
+{% for obj in products%}
+<tr class="row1">
+<th>{{obj.name}} <br/><a href="/order?productID={{obj.id}}">buy</a></th>
+<th>{{obj.price}} </th>
+<th>{{obj.ptype }}</th>
+<th><img width="100px"  src="/media/{{obj.img}}" /> </th></tr>
+{%endfor%}
+</tbody>
+</table>
+
+{% include "pagenav.html"%}
+{% endblock %}
+{% endautoescape %}
